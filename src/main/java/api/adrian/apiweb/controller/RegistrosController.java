@@ -42,5 +42,4 @@ public class RegistrosController {
     public Optional<Registros> buscarId(@PathVariable("id") Integer id) {
         return registrosService.buscarId(id);
     }
-
 }
