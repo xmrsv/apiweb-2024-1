@@ -1,6 +1,7 @@
 package api.adrian.apiweb.service.jpa;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,10 @@ public class RegistrosService implements IRegistrosService {
 
     public void modificar(Registros registro) {
         registrosRepository.save(registro);
+    }
+
+    public Optional<Registros> buscarId(Integer id) {
+        return registrosRepository.findById(id);
     }
     
 }
