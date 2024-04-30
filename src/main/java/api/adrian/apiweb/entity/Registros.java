@@ -1,5 +1,8 @@
 package api.adrian.apiweb.entity;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -70,6 +73,17 @@ public class Registros {
     }
 
     public void setCliente_id(String cliente_id) {
+        String datos = nombres + apellidos + email;
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("SHA-256");            
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        md.update(datos.getBytes());
+        byte[] digest = md.digest();
+        String result = new BigInteger(1, digest).toString(16).toLowerCase();
+        cliente_id = result;
         this.cliente_id = cliente_id;
     }
 
@@ -78,6 +92,17 @@ public class Registros {
     }
 
     public void setLlave_secreta(String llave_secreta) {
+        String datos = apellidos + email + nombres;
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("SHA-256");    
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        md.update(datos.getBytes());
+        byte[] digest = md.digest();
+        String result = new BigInteger(1, digest).toString(16).toLowerCase();
+        llave_secreta = result;
         this.llave_secreta = llave_secreta;
     }
 

@@ -6,4 +6,8 @@ import api.adrian.apiweb.entity.Registros;
 
 public interface IRegistrosService {
     List<Registros> buscarTodos();
+
+    void guardar(Registros registro);
+ 
+    void modificar(Registros registros);
 }
