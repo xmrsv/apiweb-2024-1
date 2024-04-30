@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,5 +42,10 @@ public class RegistrosController {
     @GetMapping("/registros/{id}")
     public Optional<Registros> buscarId(@PathVariable("id") Integer id) {
         return registrosService.buscarId(id);
+    }
+
+    @DeleteMapping("/registros/{id}")
+    public void eliminarId(@PathVariable("id") Integer id) {
+        registrosService.eliminarId(id);
     }
 }

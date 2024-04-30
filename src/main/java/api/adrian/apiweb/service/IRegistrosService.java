@@ -13,4 +13,6 @@ public interface IRegistrosService {
     void modificar(Registros registros);
 
     Optional<Registros> buscarId(Integer id);
+
+    void eliminarId(Integer id);
 }

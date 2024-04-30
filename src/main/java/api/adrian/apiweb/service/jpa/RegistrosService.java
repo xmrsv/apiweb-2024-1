@@ -31,4 +31,7 @@ public class RegistrosService implements IRegistrosService {
         return registrosRepository.findById(id);
     }
     
+    public void eliminarId(Integer id) {
+        registrosRepository.deleteById(id);
+    }
 }
