@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "registros")
-@SQLDelete(sql="UPDATE registros SET estado=0 WHERE idregistro=?")
+@SQLDelete(sql = "UPDATE registros SET estado=0 WHERE idregistro=?")
 @Where(clause = "estado = 1")
 public class Registros {
     @Id
@@ -80,7 +80,7 @@ public class Registros {
         String datos = nombres + apellidos + email;
         MessageDigest md = null;
         try {
-            md = MessageDigest.getInstance("SHA-256");            
+            md = MessageDigest.getInstance("SHA-256");
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -99,7 +99,7 @@ public class Registros {
         String datos = apellidos + email + nombres;
         MessageDigest md = null;
         try {
-            md = MessageDigest.getInstance("SHA-256");    
+            md = MessageDigest.getInstance("SHA-256");
         } catch (Exception e) {
             System.err.println(e);
         }

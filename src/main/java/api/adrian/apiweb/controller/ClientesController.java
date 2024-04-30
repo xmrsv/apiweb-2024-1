@@ -11,40 +11,43 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import api.adrian.apiweb.entity.Clientes;
 import api.adrian.apiweb.entity.Registros;
+import api.adrian.apiweb.service.IClientesService;
 import api.adrian.apiweb.service.IRegistrosService;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/apispring")
-public class RegistrosController {
+public class ClientesController {
     @Autowired
-    private IRegistrosService registrosService;
+    private IClientesService clientesService;
 
-    @GetMapping("/registros")
-    public List<Registros> listar() {
-        return registrosService.buscarTodos();
+    @GetMapping("/clientes")
+    public List<Clientes> listar() {
+        return clientesService.buscarTodos();
     }
 
-    @PostMapping("/registros")
-    public Registros guardar(@RequestBody Registros registro) {
-        registrosService.guardar(registro);
+    @PostMapping("/clientes")
+    public Clientes guardar(@RequestBody Clientes registro) {
+        clientesService.guardar(registro);
         return registro;
     }
 
-    @PutMapping("/registros")
-    public Registros modificar(@RequestBody Registros registro) {
-        registrosService.modificar(registro);
+    @PutMapping("/clientes")
+    public Clientes modificar(@RequestBody Clientes registro) {
+        clientesService.modificar(registro);
         return registro;
     }
 
-    @GetMapping("/registros/{id}")
-    public Optional<Registros> buscarId(@PathVariable("id") Integer id) {
-        return registrosService.buscarId(id);
+    @GetMapping("/clientes/{id}")
+    public Optional<Clientes> buscarId(@PathVariable("id") Integer id) {
+        return clientesService.buscarId(id);
     }
 
-    @DeleteMapping("/registros/{id}")
+    @DeleteMapping("/clientes/{id}")
     public void eliminarId(@PathVariable("id") Integer id) {
-        registrosService.eliminarId(id);
+        clientesService.eliminarId(id);
     }
 }
